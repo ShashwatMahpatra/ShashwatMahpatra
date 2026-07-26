@@ -1,15 +1,13 @@
 class Solution:
     def maxArea(self, height: List[int]) -> int:
-        l=0
-        r=len(height)-1
         res=0
-        while(l<r):
-            area=min(height[l],height[r]) *(r-l)
+        left=0
+        right=len(height)-1
+        while left<right:
+            area=min(height[left],height[right]) *(right-left)
             res=max(res,area)
-
-            if(height[l]<=height[r]):
-                l+=1
+            if height[left]<height[right]:
+                left+=1
             else:
-                r-=1
+                right-=1
         return res
-__import__("atexit").register(lambda: open("display_runtime.txt", "w").write("0"))
